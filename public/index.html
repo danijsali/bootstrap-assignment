@@ -84,7 +84,7 @@
           <div class="container mt-5">
             <h2 class="mb-4">Features</h2>
             <div class="row" id="infoCardContainer">
-              <!-- Info cards will be added here -->
+              <!-- Info cards -->
             </div>
           </div>
           
@@ -440,6 +440,14 @@
         </clipPath>
       </defs>
     </svg>
+
+    <div class="container mt-5">
+      <h2 class="mb-4">Our Products</h2>
+      <div class="row" id="productContainer">
+        <!-- Product cards -->
+      </div>
+    </div>
+    
 <script>
 fetch("info.json")
   .then(response => response.json())
@@ -464,6 +472,33 @@ fetch("info.json")
     });
   })
   .catch(error => console.error("Error loading info cards:", error));
+
+
+  fetch("products.json")
+  .then(response => response.json())
+  .then(data => {
+    const container = document.getElementById("productContainer");
+
+    data.forEach(product => {
+      const card = document.createElement("div");
+      card.className = "col-md-6 mb-4";
+
+      card.innerHTML = `
+        <div class="card h-100 text-center">
+             <i class="bi ${product.icon} display-3 text-primary mb-3"></i>
+            <h5 class="card-title">${product.name}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">${product.price}</h6>
+            <p class="card-text">${product.description}</p>
+            <a href="#" class="btn btn-primary btn-lg">Subscribe Now</a>
+          </div>
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+  })
+  .catch(error => console.error("Error loading products:", error));
+
 
 </script>
 
