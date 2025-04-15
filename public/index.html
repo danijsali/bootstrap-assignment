@@ -21,6 +21,8 @@
     <!-- css stylesheet -->
     <link rel="stylesheet" href="https://use.typekit.net/nbo5jzf.css" />
     <!-- muli font -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- bootstrap icons -->
   </head>
 
   <body>
@@ -78,6 +80,14 @@
               </div>
             </div>
           </div>
+
+          <div class="container mt-5">
+            <h2 class="mb-4">Features</h2>
+            <div class="row" id="infoCardContainer">
+              <!-- Info cards will be added here -->
+            </div>
+          </div>
+          
 
           <!-- Chart -->
           <div class="chart-container">
@@ -430,7 +440,32 @@
         </clipPath>
       </defs>
     </svg>
+<script>
+fetch("info.json")
+  .then(response => response.json())
+  .then(data => {
+    const container = document.getElementById("infoCardContainer");
 
+    data.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "col-md-6 mb-4";
+
+      card.innerHTML = `
+        <div class="card h-100 text-center border-0 shadow-lg">
+          <div class="card-body">
+            <i class="bi ${item.icon} display-4 text-primary mb-3"></i>
+            <h5 class="card-title">${item.title}</h5>
+            <p class="card-text">${item.description}</p>
+          </div>
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+  })
+  .catch(error => console.error("Error loading info cards:", error));
+
+</script>
 
 
   </body>

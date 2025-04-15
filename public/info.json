@@ -1,0 +1,15 @@
+[
+   
+    {
+      "title": "Tickets",
+      "description": "Use tickets to keep track of service requests and issues.",
+      "icon": "bi-ticket"
+    },
+
+    {
+        "title": "Tasks",
+        "description": "Use tasks to manage tickets and resolve problems.",
+        "icon": "bi-check-circle-fill"
+      }
+  ]
+  
